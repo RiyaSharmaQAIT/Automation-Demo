@@ -43,9 +43,13 @@ public class Sakurai_UAT_Automation_Demo_CreateClass_Test {
 	}
 
 	@Test
-	public void Test03_Instructor_Creates_New_Class(){
+	public void Test03_Instructor_Is_Able_To_Open_Create_Class_Page(){
 		test.myclasspage.instructorStartsCreatingAClass();
 		test.createclass.verifyUserIsOnCreateClassPage();
+	}
+	
+	@Test
+	public void Test04_Instructor_Creates_New_Class(){
 		test.createclass.instructorSelectsProduct(getData("class.product"));
 		test.createclass.instructorInputsClassName(getData("class.name"));
 		test.createclass.instructorInputsTerm(getData("class.term"));

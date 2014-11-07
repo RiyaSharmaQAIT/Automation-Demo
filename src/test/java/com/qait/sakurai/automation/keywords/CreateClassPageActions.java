@@ -27,14 +27,16 @@ public class CreateClassPageActions extends GetPage {
 		element("inp_selectProduct").clear();
 		element("inp_selectProduct").sendKeys(product);
 		element("inp_selectProduct").sendKeys(Keys.ENTER);
-		logMessage("[Info]: Instructor has selected the product '" + product +"'");
+		logMessage("[Info]: Instructor has selected the product '" + product
+				+ "'");
 	}
 
 	public void instructorInputsClassName(String classname) {
 		element("inp_classname").click();
 		element("inp_classname").clear();
 		element("inp_classname").sendKeys(classname);
-		logMessage("[Info]: The Instructor has chosen the classname as '" + classname + "'");
+		logMessage("[Info]: The Instructor has chosen the classname as '"
+				+ classname + "'");
 	}
 
 	public void instructorInputsTerm(String term) {
@@ -64,19 +66,20 @@ public class CreateClassPageActions extends GetPage {
 			while (driver.findElement(By.className("select2-searching"))
 					.isDisplayed()) {
 				try {
-					counter = counter +1;
+					counter = counter + 1;
 					Thread.sleep(1000);
-					logMessage("...");
+					System.out.print(counter + "... ");
 				} catch (Exception e) {
-					// TODO: handle exception
 				}
+				logMessage("[Info]: School search took approx " + counter
+						+ "' seconds!!!");
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 	}
 
 	public void instructorSubmitsCreateClassForm() {
 		element("btn_submit").click();
+		logMessage("[Info]: Instructor has completed create class!!!");
 	}
 }
