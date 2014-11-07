@@ -1,0 +1,5 @@
+# Sakurai Search Home Page
+# elementname: locatortype: locatorvalue
+Title: Prep U
+lnk_SignIn: linktext: Sign In
+lnk_Menu: xpath: //*[@id="menu-primary-navigation"]/li/a[text()='${link text}']

@@ -1,0 +1,16 @@
+# Sakurai Create Class Page
+# elementname: locatortype: locatorvalue
+Title: Prep U
+
+txt_createClassHeading: xpath: //h1[text()='Create a Class']
+btn_selectProduct: xpath: //*[@id='s2id_select-product']//span[@class='select2-arrow']
+inp_selectProduct: xpath: //*[@id="s2id_autogen1_search"]
+inp_productSearchList: xpath: //span[@class='select2-match']
+inp_classname: xpath: /html/body/div[1]/div/div/section/div/form/div/div[2]/input
+inp_term: id: term
+cal_startDate: id: dpd1
+cal_endDate: id: dpd2
+txt_date: xpath: //div[@class='datepicker-days']//td[text()='${date}']
+btn_searchSchool: xpath: //div[@id='s2id_select_school']//span[@class='select2-arrow']
+inp_searchSchool: xpath: /html/body/div[4]/div/input
+btn_submit: xpath: //button[text()='Submit'] 

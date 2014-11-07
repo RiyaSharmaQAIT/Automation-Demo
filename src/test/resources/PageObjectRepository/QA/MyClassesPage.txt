@@ -1,0 +1,6 @@
+# Sakurai My Classes Page
+# elementname: locatortype: locatorvalue
+Title: Prep U
+
+txt_pageHeader: xpath: //h1[@class='col-sm-6' and text()='My Classes']
+lnk_addClass: xpath: //a[@class='ember-view btn btn-default add-class']

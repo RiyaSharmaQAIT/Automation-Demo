@@ -1,0 +1,5 @@
+# Sakurai Login Header UI Container
+# elementname: locatortype: locatorvalue
+
+drpdwn_username: xpath: //a[@class='dropdown-toggle username']
+lnk_signOut: xpath: //li[@class='logout']
