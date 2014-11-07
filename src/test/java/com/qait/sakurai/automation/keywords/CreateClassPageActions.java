@@ -60,9 +60,9 @@ public class CreateClassPageActions extends GetPage {
 	}
 
 	private void waitforsearchingtodisaapear() {
+		int counter = 0;
 		try {
 			System.out.println("Waiting for School Search to complete... ");
-			int counter = 0;
 			while (driver.findElement(By.className("select2-searching"))
 					.isDisplayed()) {
 				try {
@@ -71,10 +71,11 @@ public class CreateClassPageActions extends GetPage {
 					System.out.print(counter + "... ");
 				} catch (Exception e) {
 				}
-				logMessage("[Info]: School search took approx " + counter
-						+ "' seconds!!!");
 			}
 		} catch (Exception e) {
+			System.out.println("");
+			logMessage("[Info]: School search took approx " + counter
+					+ " seconds!!!");
 		}
 	}
 

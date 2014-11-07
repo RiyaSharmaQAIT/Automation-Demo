@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite  verbose="0" name="Automation Training Demo Suite">
-	 <test name="" preserve-order="true">
+<suite verbose="0" name="TestNG" preserve-order="false" parallel="tests" thread-count="2" >
+	 <test name="Instructor Create Class Test" preserve-order="true">
 		<classes>
-			<class name=""></class>
+			<class name="com.qait.sakurai.automation.tests.Sakurai_UAT_Automation_Demo_CreateClass_Test"></class>
 		</classes>
 	</test>
-	<test name="" preserve-order="true">
+	<test name="Sakurai Login Page Tests" preserve-order="true">
 		<classes >
-			<class name="" ></class>
+			<class name="com.qait.sakurai.automation.tests.Sakurai_UAT_Automation_Demo_LoginPage_Test" ></class>
 		</classes> 
 	</test>
 </suite>

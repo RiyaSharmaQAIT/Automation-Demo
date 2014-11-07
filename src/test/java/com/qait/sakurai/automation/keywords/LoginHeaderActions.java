@@ -20,7 +20,7 @@ public class LoginHeaderActions extends GetPage {
 		assertThat("FAILED: user's name is not right in the Login Header",
 				element("drpdwn_username").getText(), startsWith(usersName));
 		logMessage("PASSED: Verfied correct user name '" + usersName
-				+ "'is displayed in the login header");
+				+ "' is displayed in the login header");
 	}
 
 	public void userSignsOutOfTheApplication() {
@@ -28,7 +28,6 @@ public class LoginHeaderActions extends GetPage {
 		element("drpdwn_username").click();
 		logMessage("[Info]: User clicks on the username in Login Header.");
 		executeJavascript("document.getElementsByClassName('dropdown-menu')[0].style='display:block'");
-		logMessage(element("lnk_signOut").getText());
 		driver.get(getData("app_url") + "#/login/signin");
 	}
 }

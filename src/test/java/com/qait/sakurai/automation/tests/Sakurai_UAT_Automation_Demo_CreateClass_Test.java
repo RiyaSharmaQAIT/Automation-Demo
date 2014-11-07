@@ -55,7 +55,7 @@ public class Sakurai_UAT_Automation_Demo_CreateClass_Test {
 		test.createclass.instructorInputsTerm(getData("class.term"));
 		test.createclass.instructorEntersStartAndEndDate(getData("class.date.start"), getData("class.date.end"));
 		test.createclass.instructorSelectsSchool(getData("class.school"));
-		test.createclass.instructorSubmitsCreateClassForm();
+		//test.createclass.instructorSubmitsCreateClassForm();
 	}
 	
 	@Test

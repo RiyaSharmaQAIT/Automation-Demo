@@ -6,7 +6,6 @@
 	<groupId>com.qait.automation</groupId>
 	<artifactId>prepu.sakurai</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
 
 	<name>Sakurai UAT Automated Test Suite</name>
 	<url>http://maven.apache.org</url>
@@ -14,7 +13,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<testxml>testng.xml</testxml>
+		<testxml>src/test/resources/testngxmls/TestNG.xml</testxml>
 		<seleniumver>2.43.1</seleniumver>
 	</properties>
 
@@ -84,8 +83,11 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.11</version>
+				<version>2.18</version>
 				<configuration>
+					<suiteXmlFiles>
+						<suiteXmlFile>${testxml}</suiteXmlFile>
+					</suiteXmlFiles>
 				</configuration>
 				<executions>
 					<execution>
@@ -168,4 +170,5 @@
 			</plugin>
 		</plugins>
 	</reporting>
+	<packaging>pom</packaging>
 </project>
