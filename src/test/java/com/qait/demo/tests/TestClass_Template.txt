@@ -1,4 +1,4 @@
-package com.qait.demo.automation.tests;
+package com.qait.demo.tests;
 
 import static com.qait.automation.utils.YamlReader.getData;
 

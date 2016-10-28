@@ -10,39 +10,54 @@ import java.util.Map;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
-
-import static com.qait.automation.utils.YamlReader.getData;
+import org.testng.Reporter;
 
 public class WebDriverFactory {
 
-    private static String browser;
-    private static DesiredCapabilities capabilities = new DesiredCapabilities();
+    private String browser = "";
+
+    public WebDriverFactory() {
+    }
+
+    public WebDriverFactory(String browserName) {
+        browser = browserName;
+    }
+
+    private static final DesiredCapabilities capabilities = new DesiredCapabilities();
 
     public WebDriver getDriver(Map<String, String> seleniumconfig) {
-        browser = seleniumconfig.get("browser").toString();
 
-        if (seleniumconfig.get("seleniumserver").toString().equalsIgnoreCase("local")) {
+        if (browser == null || browser.isEmpty()) {
+            browser = seleniumconfig.get("browser");
+        }
+        Reporter.log("[INFO]: The test Browser is " + browser.toUpperCase()
+                + " !!!", true);
+
+        if (seleniumconfig.get("seleniumserver").equalsIgnoreCase("local")) {
             if (browser.equalsIgnoreCase("firefox")) {
                 return getFirefoxDriver();
             } else if (browser.equalsIgnoreCase("chrome")) {
-                return getChromeDriver(seleniumconfig.get("driverpath")
-                        .toString());
+                return getChromeDriver(seleniumconfig.get("driverpath"));
             } else if (browser.equalsIgnoreCase("Safari")) {
                 return getSafariDriver();
             } else if ((browser.equalsIgnoreCase("ie"))
                     || (browser.equalsIgnoreCase("internetexplorer"))
                     || (browser.equalsIgnoreCase("internet explorer"))) {
-                return getInternetExplorerDriver(seleniumconfig.get(
-                        "driverpath").toString());
+                return getInternetExplorerDriver(seleniumconfig
+                        .get("driverpath"));
+            } //TODO: treat mobile browser and separate instance on lines of remote driver
+            else if (browser.equalsIgnoreCase("mobile")) {
+                return setMobileDriver(seleniumconfig);
             }
         }
-        if (seleniumconfig.get("seleniumserver").toString().equalsIgnoreCase("remote")) {
+        if (seleniumconfig.get("seleniumserver").equalsIgnoreCase("remote")) {
             return setRemoteDriver(seleniumconfig);
         }
         return new FirefoxDriver();
@@ -50,7 +65,6 @@ public class WebDriverFactory {
 
     private WebDriver setRemoteDriver(Map<String, String> selConfig) {
         DesiredCapabilities cap = null;
-        browser = selConfig.get("browser").toString();
         if (browser.equalsIgnoreCase("firefox")) {
             cap = DesiredCapabilities.firefox();
         } else if (browser.equalsIgnoreCase("chrome")) {
@@ -74,12 +88,24 @@ public class WebDriverFactory {
     }
 
     private static WebDriver getChromeDriver(String driverpath) {
-        capabilities.setJavascriptEnabled(true);
-        return new ChromeDriver(capabilities);
+        System.setProperty("webdriver.chrome.driver", driverpath);
+        ChromeOptions options = new ChromeOptions();
+        DesiredCapabilities cap = DesiredCapabilities.chrome();
+        cap.setCapability(ChromeOptions.CAPABILITY, options);
+        return new ChromeDriver(cap);
     }
 
     private static WebDriver getInternetExplorerDriver(String driverpath) {
-        System.setProperty("webdriver.ie.driver", driverpath);
+        if (driverpath.endsWith(".exe")) {
+            System.setProperty("webdriver.ie.driver", driverpath);
+        } else {
+            System.setProperty("webdriver.ie.driver", driverpath
+                    + "IEDriverServer.exe");
+        }
+        capabilities
+                .setCapability(
+                        InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,
+                        true);
         capabilities.setCapability("ignoreZoomSetting", true);
         return new InternetExplorerDriver(capabilities);
     }
@@ -91,9 +117,27 @@ public class WebDriverFactory {
     private static WebDriver getFirefoxDriver() {
         FirefoxProfile profile = new FirefoxProfile();
         profile.setPreference("browser.cache.disk.enable", false);
-        profile.setPreference("network.automatic-ntlm-auth.trusted-uris", getData("app_url"));
-        profile.setPreference("network.automatic-ntlm-auth.allow-non-fqdn", "true");
-
         return new FirefoxDriver(profile);
     }
+
+    private WebDriver setMobileDriver(Map<String, String> selConfig) {
+        DesiredCapabilities cap = new DesiredCapabilities();
+        String[] appiumDeviceConfig = selConfig.get("mobileDevice").split(":");
+
+        cap.setCapability("deviceName", appiumDeviceConfig[0]);
+        cap.setCapability("device", appiumDeviceConfig[1]);
+        cap.setCapability("platformName", appiumDeviceConfig[1]);
+        cap.setCapability("browserName", appiumDeviceConfig[2]);
+        String appiumServerHostUrl = selConfig.get("appiumServer");
+        URL appiumServerHost = null;
+        try {
+            appiumServerHost = new URL(appiumServerHostUrl);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        cap.setJavascriptEnabled(true);
+        
+        return new RemoteWebDriver(appiumServerHost, cap);
+    }
+
 }

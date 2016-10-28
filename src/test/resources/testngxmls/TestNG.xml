@@ -3,12 +3,7 @@
 <suite verbose="0" name="TestNG" preserve-order="false" parallel="tests" thread-count="2" >
 	 <test name="Instructor Create Class Test" preserve-order="true">
 		<classes>
-			<class name="com.qait.sakurai.automation.tests.Sakurai_UAT_Automation_Demo_CreateClass_Test"></class>
+			<class name="com.qait.demo.automation.tests.demo_UAT_Automation_Demo_LoginPage_Test"></class>
 		</classes>
-	</test>
-	<test name="Sakurai Login Page Tests" preserve-order="true">
-		<classes >
-			<class name="com.qait.sakurai.automation.tests.Sakurai_UAT_Automation_Demo_LoginPage_Test" ></class>
-		</classes> 
 	</test>
 </suite>

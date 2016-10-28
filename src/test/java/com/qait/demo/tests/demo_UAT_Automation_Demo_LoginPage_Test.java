@@ -1,12 +1,13 @@
-package com.qait.demo.automation.tests;
+package com.qait.demo.tests;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
-import static com.qait.automation.utils.YamlReader.getData;
 
 import com.qait.automation.TestSessionInitiator;
+import org.testng.ITestResult;
 
 /**
  *
@@ -16,20 +17,16 @@ import com.qait.automation.TestSessionInitiator;
 public class demo_UAT_Automation_Demo_LoginPage_Test {
 
 TestSessionInitiator test;
-String appUrl = null;
 
 @BeforeClass
 public void start_test_session() {
-        test = new TestSessionInitiator();
-        appUrl = getData("app_url");
+        test = new TestSessionInitiator("demo_UAT_Automation_Demo_LoginPage_Test");
 }
 
 @Test
 public void Test01_Launch_demo_Application() {
         test.launchApplication();
-        test.landingpage.verifyUserIsOnLandingPage();
 }
-
 
 
 @AfterMethod

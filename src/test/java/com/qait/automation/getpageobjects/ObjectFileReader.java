@@ -89,13 +89,6 @@ public class ObjectFileReader {
             case prod:
                 tier = "PROD/";
                 break;
-            case pristine:
-            case PR:
-            case PRISTINE:
-            case Pristine:
-            case pr:
-                tier = "PR/";
-                break;
             case qa:
             case QA:
             case Qa:
@@ -106,10 +99,10 @@ public class ObjectFileReader {
             case dev:
                 tier = "DEV/";
                 break;
-            case mice:
-            case MICE:
-            case Mice:
-                tier = "MICE/";
+            case stg:
+            case STG:
+            case staging:
+                tier = "STG/";
                 break;
         }
     }
