@@ -1,0 +1,46 @@
+package com.qait.demo.automation.tests;
+
+import static com.qait.automation.utils.YamlReader.getData;
+
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import com.qait.automation.TestSessionInitiator;
+
+/**
+ *
+ * @author prashantshukla
+ *
+ */
+public class TestClass_Template {
+
+	TestSessionInitiator test;
+
+	@BeforeClass
+	public void start_test_session() {
+		test = new TestSessionInitiator();
+	}
+
+	@Test
+	public void Test01_Launch_demo_Application() {
+		test.launchApplication();
+	}
+
+	@Test (dependsOnMethods={ "Test01_Launch_demo_Application" })
+	public void Test02_Login_To_The_Application() {
+	// Implement Second Test Step
+	}
+  
+  
+	@AfterMethod
+	public void take_screenshot_on_failure(ITestResult result) {
+		test.takescreenshot.takeScreenShotOnException(result);
+	}
+
+
+	@AfterClass(alwaysRun = true)
+	public void stop_test_session() {
+		test.closeBrowserSession();
+	}
+}
