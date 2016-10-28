@@ -1,14 +1,13 @@
-### Sakurai UAT - Automated Functional Test Demo
+### AutoTrader Canada - Automation demo
 ---
 #### Summary:
 
-Automated Test Suite. This is a demo of Selenium Testing Tool used for automated testing of Project Sakurai - PrepU ReArchitecture
-Skip to end of banner
+Automated Test Suite. This is a demo of Selenium Testing Tool used for automated testing of Mobile Apps- AutoTrader Canada
 
 
 #### System Requirement:
 
-* JDK 1.6 or above
+* JDK 8+ 
 * Maven 3.1
 * Eclipse or IDE of choice in case there is need to update the script. (optional)
     
