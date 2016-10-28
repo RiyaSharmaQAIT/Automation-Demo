@@ -1,4 +1,4 @@
-package com.qait.sakurai.automation.keywords;
+package com.qait.demo.automation.keywords;
 
 import org.openqa.selenium.WebDriver;
 

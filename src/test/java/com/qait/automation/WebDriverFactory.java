@@ -74,7 +74,6 @@ public class WebDriverFactory {
     }
 
     private static WebDriver getChromeDriver(String driverpath) {
-        System.setProperty("webdriver.chrome.driver", driverpath);
         capabilities.setJavascriptEnabled(true);
         return new ChromeDriver(capabilities);
     }

@@ -1,4 +1,4 @@
-package com.qait.sakurai.automation.tests;
+package com.qait.demo.automation.tests;
 
 import static com.qait.automation.utils.YamlReader.getData;
 
@@ -13,7 +13,7 @@ import com.qait.automation.TestSessionInitiator;
  * @author prashantshukla
  *
  */
-public class Sakurai_UAT_Automation_Demo_CreateClass_Test {
+public class demo_UAT_Automation_Demo_CreateClass_Test {
 
 	TestSessionInitiator test;
 	String appUrl = null;
@@ -25,7 +25,7 @@ public class Sakurai_UAT_Automation_Demo_CreateClass_Test {
 	}
 
 	@Test
-	public void Test01_Launch_Sakurai_Application() {
+	public void Test01_Launch_demo_Application() {
 		test.launchApplication(appUrl, getData("users.http_auth.username"),
 				getData("users.http_auth.password"));
 		test.landingpage.verifyUserIsOnLandingPage();

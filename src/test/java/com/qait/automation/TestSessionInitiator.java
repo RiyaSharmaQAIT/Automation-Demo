@@ -9,11 +9,11 @@ import static com.qait.automation.utils.YamlReader.setYamlFilePath;
 import static com.qait.automation.utils.DataReadWrite.getProperty;
 
 import com.qait.automation.utils.CustomFunctions;
-import com.qait.sakurai.automation.keywords.CreateClassPageActions;
-import com.qait.sakurai.automation.keywords.LandingPageActions;
-import com.qait.sakurai.automation.keywords.LoginHeaderActions;
-import com.qait.sakurai.automation.keywords.LoginPageActions;
-import com.qait.sakurai.automation.keywords.MyClassesPageActions;
+import com.qait.demo.automation.keywords.CreateClassPageActions;
+import com.qait.demo.automation.keywords.LandingPageActions;
+import com.qait.demo.automation.keywords.LoginHeaderActions;
+import com.qait.demo.automation.keywords.LoginPageActions;
+import com.qait.demo.automation.keywords.MyClassesPageActions;
 
 import java.util.HashMap;
 import java.util.Map;
