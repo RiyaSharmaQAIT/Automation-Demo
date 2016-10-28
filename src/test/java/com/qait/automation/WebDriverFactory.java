@@ -88,7 +88,6 @@ public class WebDriverFactory {
     }
 
     private static WebDriver getChromeDriver(String driverpath) {
-        System.setProperty("webdriver.chrome.driver", driverpath);
         ChromeOptions options = new ChromeOptions();
         DesiredCapabilities cap = DesiredCapabilities.chrome();
         cap.setCapability(ChromeOptions.CAPABILITY, options);

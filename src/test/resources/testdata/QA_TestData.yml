@@ -1,4 +1,4 @@
-app_url: http://www.autotrader.co.uk/
+base_url: http://www.autotrader.co.uk/
 
 # Following details are to send the emailable report to all the recipients after test execution
 email:
