@@ -4,17 +4,17 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.qait.automation</groupId>
-	<artifactId>prepu.sakurai</artifactId>
+	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<name>Sakurai UAT Automated Test Suite</name>
+	<name>Automated Test - DEMO</name>
 	<url>http://maven.apache.org</url>
 	<description>This is demo of Automated UAT suite for Project Sakurai - PreU Rearchitecture.</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<testxml>src/test/resources/testngxmls/TestNG.xml</testxml>
-		<seleniumver>3.0.1</seleniumver>
+		<seleniumver>2.53.1</seleniumver>
 	</properties>
 
 	<dependencies>

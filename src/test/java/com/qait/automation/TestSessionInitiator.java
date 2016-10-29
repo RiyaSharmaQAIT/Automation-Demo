@@ -82,10 +82,7 @@ private void _configureBrowser() {
                 driver.manage().window().maximize();
         }
         // driver.manage().window().setSize(new Dimension(414, 628));
-        driver.manage()
-        .timeouts()
-        .implicitlyWait(Integer.parseInt(getProperty("timeout")),
-                        TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(Integer.parseInt(getProperty("timeout")),TimeUnit.SECONDS);
 }
 
 private Map<String, String> _getSessionConfig() {
@@ -105,8 +102,9 @@ public void launchApplication() {
 
 public void launchApplication(String base_url) {
         Reporter.log("\n[INFO]: The application url is :- " + base_url, true);
-        driver.manage().deleteAllCookies();
+        //driver.manage().deleteAllCookies();
         driver.get(base_url);
+        //driver.navigate().to(base_url);
 
 }
 
