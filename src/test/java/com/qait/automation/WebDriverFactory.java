@@ -136,7 +136,7 @@ public class WebDriverFactory {
         }
         cap.setJavascriptEnabled(true);
         
-        return new RemoteWebDriver(appiumServerHost, cap);
+        return new RemoteWebDriver(appiumServerHost, cap);        
     }
 
 }
