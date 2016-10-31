@@ -44,14 +44,13 @@ public class WebDriverFactory {
             if (browser.equalsIgnoreCase("firefox")) {
                 return getFirefoxDriver();
             } else if (browser.equalsIgnoreCase("chrome")) {
-                return getChromeDriver(seleniumconfig.get("driverpath"));
+                return getChromeDriver();
             } else if (browser.equalsIgnoreCase("Safari")) {
                 return getSafariDriver();
             } else if ((browser.equalsIgnoreCase("ie"))
                     || (browser.equalsIgnoreCase("internetexplorer"))
                     || (browser.equalsIgnoreCase("internet explorer"))) {
-                return getInternetExplorerDriver(seleniumconfig
-                        .get("driverpath"));
+                return getInternetExplorerDriver();
             } //TODO: treat mobile browser and separate instance on lines of remote driver
             else if (browser.equalsIgnoreCase("mobile")) {
                 return setMobileDriver(seleniumconfig);
@@ -87,20 +86,14 @@ public class WebDriverFactory {
         return new RemoteWebDriver(selserverhost, cap);
     }
 
-    private static WebDriver getChromeDriver(String driverpath) {
+    private static WebDriver getChromeDriver() {
         ChromeOptions options = new ChromeOptions();
         DesiredCapabilities cap = DesiredCapabilities.chrome();
         cap.setCapability(ChromeOptions.CAPABILITY, options);
         return new ChromeDriver(cap);
     }
 
-    private static WebDriver getInternetExplorerDriver(String driverpath) {
-        if (driverpath.endsWith(".exe")) {
-            System.setProperty("webdriver.ie.driver", driverpath);
-        } else {
-            System.setProperty("webdriver.ie.driver", driverpath
-                    + "IEDriverServer.exe");
-        }
+    private static WebDriver getInternetExplorerDriver() {
         capabilities
                 .setCapability(
                         InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,
