@@ -12,6 +12,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 
 
 public class IMDB_Native_App_Automation_Demo{
@@ -39,7 +41,8 @@ public class IMDB_Native_App_Automation_Demo{
   
   @Test
   public void test(){
-    
+    driver.findElement(By.id("search")).click();
+    driver.findElement(By.id("search_src_text")).sendKeys("IronMan" + "\n");
   }
   
   @AfterClass
